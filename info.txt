@@ -1,0 +1,22 @@
+Tiles
+0 = village
+1 = wheat
+2 = clay
+3 = wood
+4 = stone
+
+Resource Node
+
+Number = (1..18)
+Type = (FOOD, WOOD, CLAY, STONE)
+Level = 0
+PPW_PerLevel = [10,12,14,...]
+MW_PerLevel = [10,20,30,...]
+UpgradeCost = ( [FOOD,WOOD,CLAY,STONE,IRON] ) = [[10,10,10,10,0],[20,20,20,20,0],...)
+
+
+Production per worker = PPW_PerLevel[Level]
+Max workers = MW_PerLevel[Level]
+
+Current workers = 
+

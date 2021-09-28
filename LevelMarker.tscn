@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Fonts/arial.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/LevelMarker.png" type="Texture" id=2]
+[ext_resource path="res://LevelMarker.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 128
+font_data = ExtResource( 1 )
+
+[node name="LevelMarker" type="Control"]
+rect_scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Sprite"]
+margin_top = 70.0
+margin_right = 40.0
+margin_bottom = 70.0
+use_top_left = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Sprite/CenterContainer"]
+margin_left = -36.0
+margin_top = -146.0
+margin_right = 35.0
+margin_bottom = 145.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
+text = "0
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}

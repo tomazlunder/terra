@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://VillageTilemap.tres" type="TileSet" id=1]
+[ext_resource path="res://Assets/ResourceBackground.png" type="Texture" id=2]
+[ext_resource path="res://ResourceTileMap.gd" type="Script" id=3]
+[ext_resource path="res://Resources.gd" type="Script" id=4]
+[ext_resource path="res://ResourceUI.gd" type="Script" id=5]
+[ext_resource path="res://Village.gd" type="Script" id=6]
+[ext_resource path="res://ResourceCoutnerUI.tscn" type="PackedScene" id=7]
+
+[node name="Village" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Resources" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="ResourceBackground" type="Sprite" parent="Resources"]
+position = Vector2( 118.358, 141.759 )
+scale = Vector2( 1.29887, 1.34474 )
+texture = ExtResource( 2 )
+
+[node name="ResourceTileMap" type="TileMap" parent="Resources"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 256, 227 )
+cell_half_offset = 0
+format = 1
+script = ExtResource( 3 )
+
+[node name="ResourceCamera" type="Camera2D" parent="Resources"]
+offset = Vector2( 128, 128 )
+current = true
+zoom = Vector2( 2.3, 2.3 )
+
+[node name="ResourceLevelsUI" type="Control" parent="Resources"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResourceUI" type="Control" parent="."]
+margin_left = -1047.0
+margin_top = -559.0
+margin_right = 1305.0
+margin_bottom = 815.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResourceCoutnerUI" parent="ResourceUI" instance=ExtResource( 7 )]
+
+[node name="Buildings" type="Node2D" parent="."]
