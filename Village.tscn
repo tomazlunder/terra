@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://VillageTilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/ResourceBackground.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://ResourceCoutnerUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/VillageBackground.png" type="Texture" id=8]
 [ext_resource path="res://MyDefaultTheme.tres" type="Theme" id=9]
+[ext_resource path="res://TileUI.tscn" type="PackedScene" id=10]
 
 [node name="Main" type="Node2D"]
 
@@ -16,6 +17,43 @@
 
 [node name="Village" type="Node2D" parent="Villages"]
 script = ExtResource( 6 )
+
+[node name="Camera" type="Camera2D" parent="Villages/Village"]
+visible = false
+offset = Vector2( 128, 128 )
+current = true
+zoom = Vector2( 2.3, 2.3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Villages/Village"]
+
+[node name="ButtonResources" type="Button" parent="Villages/Village/CanvasLayer"]
+margin_left = 22.0
+margin_top = 8.0
+margin_right = 188.0
+margin_bottom = 50.0
+theme = ExtResource( 9 )
+text = "Resources"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonCenter" type="Button" parent="Villages/Village/CanvasLayer"]
+margin_left = 204.0
+margin_top = 7.0
+margin_right = 374.0
+margin_bottom = 51.0
+theme = ExtResource( 9 )
+text = "Center"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResourceCoutnerUI" parent="Villages/Village/CanvasLayer" instance=ExtResource( 7 )]
+margin_left = 23.5103
+margin_top = 65.2636
+margin_right = -713.49
+margin_bottom = -159.736
+rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="Resources" type="Node2D" parent="Villages/Village"]
 script = ExtResource( 4 )
@@ -32,11 +70,6 @@ cell_half_offset = 0
 format = 1
 script = ExtResource( 3 )
 
-[node name="ResourceCamera" type="Camera2D" parent="Villages/Village/Resources"]
-offset = Vector2( 128, 128 )
-current = true
-zoom = Vector2( 2.3, 2.3 )
-
 [node name="ResourceLevelsUI" type="Control" parent="Villages/Village/Resources"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -44,6 +77,15 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Villages/Village/Resources"]
+
+[node name="TileUI" parent="Villages/Village/Resources/CanvasLayer" instance=ExtResource( 10 )]
+visible = false
+margin_left = 323.0
+margin_top = 102.0
+margin_right = -351.0
+margin_bottom = -76.0
 
 [node name="Center" type="Node2D" parent="Villages/Village"]
 visible = false
@@ -53,40 +95,14 @@ position = Vector2( 128.295, 128.639 )
 scale = Vector2( 1.22949, 1.27718 )
 texture = ExtResource( 8 )
 
-[node name="ResourceUI" type="Control" parent="Villages/Village"]
-margin_left = -1047.0
-margin_top = -559.0
-margin_right = 1305.0
-margin_bottom = 815.0
+[node name="TextureButton" type="TextureButton" parent="Villages/Village/Center"]
+margin_left = -9.91068
+margin_top = 28.2245
+margin_right = 112.089
+margin_bottom = 146.225
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ResourceCoutnerUI" parent="Villages/Village/ResourceUI" instance=ExtResource( 7 )]
-margin_top = 71.3524
-margin_bottom = -153.648
-
-[node name="ButtonResources" type="Button" parent="Villages/Village"]
-margin_left = -1040.14
-margin_top = -552.786
-margin_right = -802.136
-margin_bottom = -496.786
-theme = ExtResource( 9 )
-text = "Resources"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ButtonCenter" type="Button" parent="Villages/Village"]
-margin_left = -794.089
-margin_top = -552.786
-margin_right = -556.089
-margin_bottom = -496.786
-theme = ExtResource( 9 )
-text = "Center"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="pressed" from="Villages/Village/ButtonResources" to="Villages/Village" method="_on_ButtonResources_pressed"]
-[connection signal="pressed" from="Villages/Village/ButtonCenter" to="Villages/Village" method="_on_ButtonCenter_pressed"]
+[connection signal="pressed" from="Villages/Village/CanvasLayer/ButtonResources" to="Villages/Village" method="_on_ButtonResources_pressed"]
+[connection signal="pressed" from="Villages/Village/CanvasLayer/ButtonCenter" to="Villages/Village" method="_on_ButtonCenter_pressed"]

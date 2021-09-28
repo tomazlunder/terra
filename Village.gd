@@ -15,8 +15,6 @@ var perDay = [0,0,0,0,0]
 #60 seconds = 1 day
 var perSecond = 1/60.0
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -61,7 +59,7 @@ func _process(delta):
 	for item in resourseText:
 		#print(item)
 		var text = resourseText[i] + str(floor(resources[i])) + "/" + str(maxResources[i])
-		$ResourceUI/ResourceCoutnerUI/ItemList.set_item_text(i, text)
+		$CanvasLayer/ResourceCoutnerUI/ItemList.set_item_text(i, text)
 		i+=1 
 		
 	#print(resources)

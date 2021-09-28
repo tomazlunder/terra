@@ -9,6 +9,8 @@ var levelMarker = load("res://LevelMarker.tscn")
 
 var VillageCoordinates = Vector2(0,0)
 
+var dialogOpen = false
+
 var ResourceCoordinates = [
 	Vector2(-1,-2),
 	Vector2(0,-2),
@@ -65,16 +67,25 @@ func _ready():
 		LMinstance.set_position(realCords)
 		$ResourceLevelsUI.add_child(LMinstance)
 
-func _input(event):
+func _unhandled_input(event):
 	if !is_visible():
 		return
 	if event.is_action_released("leftclick"):
 		var Cell = $ResourceTileMap.FindCell(get_global_mouse_position())
 		print(Cell)
 		var world = $ResourceTileMap.map_to_world(Cell)
-		#print(world)
 		
-		#$ResourceTileMap.set_cell(Cell.x, Cell.y, 0)
+		if(TileDict.has(Cell)):
+			print("Tile found!")
+			var tile = TileDict.get(Cell)
+			dialogOpen = true
+			$CanvasLayer/TileUI.show()
+			$CanvasLayer/TileUI.setTile(tile)
+			#TODO: Pass tile to dialog
+		else:
+			if(dialogOpen == true):
+				$CanvasLayer/TileUI.hide()
+				dialogOpen = false
 		
 func shuffleList(list):
 	randomize()
