@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "LevelMarker",
+"language": "GDScript",
+"path": "res://LevelMarker.gd"
+}, {
 "base": "Node",
 "class": "ResourceNode",
 "language": "GDScript",
 "path": "res://ResourceNode.gd"
 } ]
 _global_script_class_icons={
+"LevelMarker": "",
 "ResourceNode": ""
 }
 

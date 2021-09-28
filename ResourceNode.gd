@@ -17,11 +17,11 @@ var resourcesPerLevel;
 
 func _init(var _type):	
 	type = _type;
-	level = 0;
+	level = 10;
 	workers = 1; #TODO: Change this to 0 when tile popup UI added
 	
-	productionPerWorkerPerLevel = [10,12,14,16,18,20,22,24,26,28]
-	maxWorkersPerLevel = [10,15,20,25,30,35,40,45,50,55]
+	productionPerWorkerPerLevel = [10,12,14,16,18,20,22,24,26,28,30]
+	maxWorkersPerLevel = [10,15,20,25,30,35,40,45,50,55,60]
 	resourcesPerLevel = [
 		[10,10,10,10,0],
 		[20,20,20,20,0],

@@ -57,6 +57,7 @@ func _ready():
 		i = i+1
 		
 		var LMinstance = levelMarker.instance()
+		LMinstance.init(instance)
 		#LMinstance.set_scale(0.5,0.5)
 		var realCords = $ResourceTileMap.map_to_world(coordinates)
 		var tileSize = $ResourceTileMap.tile_set.tile_get_texture(0).get_size().y
@@ -65,11 +66,13 @@ func _ready():
 		$ResourceLevelsUI.add_child(LMinstance)
 
 func _input(event):
+	if !is_visible():
+		return
 	if event.is_action_released("leftclick"):
 		var Cell = $ResourceTileMap.FindCell(get_global_mouse_position())
 		print(Cell)
 		var world = $ResourceTileMap.map_to_world(Cell)
-		print(world)
+		#print(world)
 		
 		#$ResourceTileMap.set_cell(Cell.x, Cell.y, 0)
 		
