@@ -2,8 +2,6 @@ extends Node
 
 class_name ResourceNode
 
-
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -19,9 +17,8 @@ var resourcesPerLevel;
 
 func _init(var _type):	
 	type = _type;
-	# Wheat tile
 	level = 0;
-	workers = 1;
+	workers = 1; #TODO: Change this to 0 when tile popup UI added
 	
 	productionPerWorkerPerLevel = [10,12,14,16,18,20,22,24,26,28]
 	maxWorkersPerLevel = [10,15,20,25,30,35,40,45,50,55]
@@ -33,7 +30,7 @@ func _init(var _type):
 		[50,50,50,50,0]
 	]
 	
-	#Specific for wheat...
+	#Specific for wheat... (TODO)
 	if(type == 1):
 		pass
 			
