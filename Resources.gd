@@ -70,7 +70,13 @@ func _ready():
 func _unhandled_input(event):
 	if !is_visible():
 		return
+		
 	if event.is_action_released("leftclick"):
+		if(dialogOpen == true):
+			$CanvasLayer/TileUI.hide()
+			dialogOpen = false
+			return
+		
 		var Cell = $ResourceTileMap.FindCell(get_global_mouse_position())
 		print(Cell)
 		var world = $ResourceTileMap.map_to_world(Cell)
@@ -82,10 +88,6 @@ func _unhandled_input(event):
 			$CanvasLayer/TileUI.show()
 			$CanvasLayer/TileUI.setTile(tile)
 			#TODO: Pass tile to dialog
-		else:
-			if(dialogOpen == true):
-				$CanvasLayer/TileUI.hide()
-				dialogOpen = false
 		
 func shuffleList(list):
 	randomize()
